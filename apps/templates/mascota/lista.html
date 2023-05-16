@@ -1,0 +1,38 @@
+{% extends "home.html" %}
+{% block  content %}
+      <a class="btn btn-primary btn-sm" href={% url 'apps.veterinaria:crear_mascota' %}>+Mascota</a>
+      <hr>
+<div class= "table-responsive-lg" >
+      <table class="table table-hover table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Propietario</th>
+              <th scope="col">Numero chip</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in object_list %}
+            <tr>
+              <td>{{item.cliente_id}}</td>
+              <td>{{item.numero_chip}}</td>
+              <td>{{item.nombre_mascota}}</td>
+              <td>{{item.tipo_mascota}}</td>
+              <td>{{item.estado}}</td>
+              <td>
+                <a href={% url 'apps.veterinaria:editar_mascota' item.id %}>
+                  <i class="fas fa-edit fa-lg"></i></a>
+                &nbsp;
+                <a href={% url 'apps.veterinaria:eliminar_mascota' item.id %}>
+                  <i class="fas fa-trash-alt fa-lg" style="color: #ff0000;"></i>
+                </a>
+              </td>   
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+</div>
+{% endblock  %}

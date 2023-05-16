@@ -1,0 +1,17 @@
+{% extends "home.html" %}
+{% load crispy_forms_tags %}
+
+{% block  content %}
+<h2>{{titulo}}</h2>
+<hr>
+<form  method="post">
+          {% csrf_token %}
+          {{ form  | crispy }}
+          <hr>
+      <div class="d-flex justify-content-end">
+            <a  class="btn btn-secondary btn-sm"  href= {% url 'apps.veterinaria:listado_historia' %}>Cancelar</a>
+            &nbsp;
+            <input class="btn btn-primary btn-sm" type="submit" value={{btn}}>
+      </div>
+</form>
+{% endblock  %}

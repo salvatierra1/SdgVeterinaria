@@ -1,0 +1,52 @@
+{% extends "home.html" %}
+{% block  content %}
+<form method="GET" class= "d-none d-sm-inline form-inline mr-auto ml-md-3 my-2 my-md nw-100 navbar-search">
+  <div class="input-group">
+    <input type="text" class="form-control bg-liht border-1 small" placeholder="Buscar por nombre, apellido" name="buscar" value="">
+    <input class="btn btn-primary btn-sm" type="submit" value="Buscar">
+    </button>
+  </div>
+</form>
+<br>
+<h4>{{titulo}}</h4>
+<a class="btn btn-primary btn-sm" href={% url 'apps.veterinaria:crear_clientes' %}>+Cliente</a>
+<hr>
+<div class= "table-responsive-lg">
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Dni</th>
+      <th scope="col">Ciudad</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Telefono</th>
+      <th scope="col">Fecha alta</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in clientes %}
+    <tr>
+      <td>{{item.nombre}}</td>
+      <td>{{item.apellido}}</td>
+      <td>{{item.dni}}</td>
+      <td>{{item.ciudad}}</td>
+      <td>{{item.direccion}}</td>
+      <td>{{item.telefono}}</td>
+      <td>{{item.fecha_alta}}</td>
+      <td>{{item.estado}}</td>
+      <td>
+        <a href={% url 'apps.veterinaria:editar_clientes' item.id %}>
+          <i class="fas fa-edit fa-lg"></i></a>
+        &nbsp;
+        <a href={% url 'apps.veterinaria:eliminar_clientes' item.id %}>
+          <i class="fas fa-trash-alt fa-lg" style="color: #ff0000;"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock  %}

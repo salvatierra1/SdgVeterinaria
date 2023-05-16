@@ -1,0 +1,17 @@
+{% extends "home.html" %}
+{% load crispy_forms_tags %}
+
+{% block  content %}
+<form method="post">
+          {% csrf_token %}
+          <h4 style= color:red>¿Estás seguro que deseas borrar el cliente {{cliente}}?</h4>
+    <div class="d-flex justify-content-end">
+          <a  class="btn btn-secondary"  href= {% url 'apps.veterinaria:listado_clientes' %}>Cancelar</a>
+            &nbsp;
+          <input class="btn btn-primary"  type="submit" value="Aceptar"/>
+    </div>
+</form>
+  
+{% endblock  %}
+
+

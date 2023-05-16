@@ -1,0 +1,25 @@
+{% extends "home.html" %}
+{% load crispy_forms_tags %}
+
+{% block  content %}
+<div class="row">
+  <div class="col-12 col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-body">
+        <h2>Historia</h2>
+        <hr>
+        <form method="post">
+          {% csrf_token %}
+          <h4>¿Estás seguro que deseas borrar la mascota {{mascota}}?</h4>
+          <hr>
+          <div class="d-flex justify-content-end">
+            <a  class="btn btn-secondary"  href= {% url 'apps.veterinaria:listado_mascota' %}>Cancelar</a>
+            &nbsp;
+            <input class="btn btn-primary"  type="submit" value="Aceptar"/>
+          </div>
+        </form>
+      </div> 
+    </div>
+  </div>
+  <form>
+{% endblock  %}

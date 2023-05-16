@@ -1,0 +1,16 @@
+{% extends "home.html" %}
+{% load crispy_forms_tags %}
+
+{% block  content %}
+<form method="post">
+          {% csrf_token %}
+          <h4>¿Estás seguro que deseas borrar la historia clinica?</h4>
+          <hr>
+      <div class="d-flex justify-content-end">
+            <a  class="btn btn-secondary"  href= {% url 'apps.veterinaria:listado_historia' %}>Cancelar</a>
+            &nbsp;
+            <input class="btn btn-primary"  type="submit" value="Aceptar"/>
+      </div>
+</form>
+
+{% endblock  %}

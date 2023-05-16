@@ -1,0 +1,34 @@
+{% extends "home.html" %}
+{% block  content %}
+<a class="btn btn-primary btn-sm" href={% url 'apps.veterinaria:crear_historia' %}>+Historia</a>
+<hr>
+<div class= "table-responsive-lg">
+  <table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Mascota</th>
+        <th scope="col">Fecha consulta</th>
+        <th scope="col">Observaciones</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in object_list %}
+      <tr>
+        <td>{{item.mascota_id}}</td>
+        <td>{{item.fecha_consulta}}</td>
+        <td>{{item.observaciones}}</td>
+        <td>
+          <a href={% url 'apps.veterinaria:editar_historia' item.id %}>
+            <i class="fas fa-edit fa-lg"></i></a>
+          &nbsp;
+          <a href={% url 'apps.veterinaria:eliminar_historia' item.id %}>
+            <i class="fas fa-trash-alt fa-lg" style="color: #ff0000;"></i>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock  %}
